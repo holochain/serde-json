@@ -1,6 +1,6 @@
 [package]
 name = "hc_serde_json"
-version = "1.0.140"
+version = "1.0.141"
 authors = [
     "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
     "David Tolnay <dtolnay@gmail.com>",
