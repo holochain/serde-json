@@ -9,7 +9,7 @@ publish = false
 path = "test.rs"
 
 [dependencies]
-serde_json = { path = "../..", default-features = false }
+serde_json = { path = "../..", default-features = false, package = "hc_serde_json" }
 
 [features]
 default = ["std"]
