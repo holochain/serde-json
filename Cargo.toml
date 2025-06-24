@@ -1,7 +1,11 @@
 [package]
-name = "serde_json"
+name = "hc_serde_json"
 version = "1.0.140"
-authors = ["Erick Tryzelaar <erick.tryzelaar@gmail.com>", "David Tolnay <dtolnay@gmail.com>"]
+authors = [
+    "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+    "David Tolnay <dtolnay@gmail.com>",
+    "Holochain Core Dev Team <devcore@holochain.org>",
+]
 categories = ["encoding", "parser-implementations", "no-std"]
 description = "A JSON serialization file format"
 documentation = "https://docs.rs/serde_json"
@@ -10,6 +14,9 @@ keywords = ["json", "serde", "serialization"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/serde-rs/json"
 rust-version = "1.56"
+
+[lib]
+name = "serde_json"
 
 [dependencies]
 indexmap = { version = "2.2.3", optional = true }
