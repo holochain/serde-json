@@ -1,0 +1,1940 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.1.0] - 2025-06-24
+
+### Added
+
+- Add more warnings to apply buffering on docs of affected functions by @JonathanBrouwer
+- Add Map::into_values method by @tisonkun
+- Add `'static` lifetime to `const`'s by @bheylin
+- Add literal 'null', 'true' and 'false' consts to `RawValue` struct. by @bheylin
+- Add a safety comment to unsafe block by @djmitche
+- Add Number u128 conversions by @dtolnay
+- Add i128 deserialization by @druide
+- Add methods on Map and Value to destroy preserved ordering by @dtolnay
+- Add support for 128 bit HashMap key serialization by @Mrreadiness
+- Add `OccupiedEntry::shift_remove()` and `swap_remove()` by @GREsau
+- Add `OccupiedEntry::remove_entry()` (and shift/swap versions) by @GREsau
+- Add better tests by @purplesyringa
+- Add Map::shift_insert() by @joshka
+- Add swap_remove and shift_remove methods on Map by @dtolnay
+- Add test of negative NaN and negative infinity by @dtolnay
+- Support deserializing from &RawValue by @dtolnay
+- Add cfg banner to documentation of Number::as_str by @dtolnay
+- Adds missing cfg attr to as_str by @chanced
+- Adds `as_str` to `Number` if `arbitrary_precision` is enabled by @chanced
+- Adds `as_number` to `Value` by @chanced
+- Support deserializing bool in map keys by @dtolnay
+- Support serializing bool in map keys by @dtolnay
+- Add test for boolean keys in map by @dtolnay
+- Add test of leading and trailing whitespace in integer key in from_value by @dtolnay
+- Add test of trailing whitespace in integer key by @dtolnay
+- Add optional trailing commas in treemap macro by @dtolnay
+- Add CI job using minimal-versions by @dtolnay
+- Support a manual trigger on CI workflow by @dtolnay
+- Add Error::io_error_kind by @dtolnay
+- Add an example of producing a Null in a json! literal by @ndmitchell
+- Add regression test for issue 1004 by @dtolnay
+- Support 128-bit integers in to_value by @dtolnay
+- Add test of integer128 to_value by @dtolnay
+- Add regression test for issue 953 by @dtolnay
+- Add `clone_from` to `Map`; `Map::append` now uses `IndexMap::extend` by @Lucretiel
+- Add direct support for i128 and u128 via itoa by @Lucretiel
+- Add a CI build for arbitrary precision without std by @dtolnay
+- Add test of Display for Number containing float by @dtolnay
+- Add categories to crates.io metadata by @dtolnay
+- Add authors to Cargo.toml by @dtolnay
+- Add actions job to notice outdated dependencies by @dtolnay
+- Support deserializing map key as &RawValue by @dtolnay
+- Add test of deserializing a &RawValue in map key position by @dtolnay
+- Add discord invite links by @dtolnay
+- Add regression test for issue 845 by @dtolnay
+- Add a miri test job in CI by @dtolnay
+- Add impl From<Box<RawValue>> for Box<str> by @jplatte
+- Add `Map::get_key_value` method.
+- Add retain to Map
+- Add test parsing `-0` by @dtolnay
+- Add regression test for issue 795 by @dtolnay
+- Add doc(cfg(feature = "std")) attribute where appropriate by @jplatte
+- Add CI job to ensure documentation can be built by @jplatte
+- Add test of RawValue deserialization from invalid utf-8 by @dtolnay
+- Add Entry::and_modify by @Krout0n
+- Add impl From<Number> for Value by @imp
+- Add test of as_f64 on large number by @dtolnay
+- Add no-std preserve_order check in CI by @dtolnay
+- Add CI builds on rust 1.40 and 1.45 by @dtolnay
+- Add compiler version detection for BTreeMap api by @dtolnay
+- Add skeleton for Map::remove_entry by @dtolnay
+- Add Read implementation for &mut Read by @tinou98
+- Add ui test of missing comma between object entries by @dtolnay
+- Add float test case demonstrating exponent overflow by @dtolnay
+- Add brief note to top of lexical sources by @dtolnay
+- Add some more number failure tests by @dtolnay
+- Add roundtrip test of f32 edge case by @dtolnay
+- Add build script to set up limb width cfg by @dtolnay
+- Add explanation to lexical lib by @dtolnay
+- Add sample roundtrip test by @japaric
+- Add no-std verification in CI by @dtolnay
+- Support verifying no-std support through serde_json_test by @dtolnay
+- Add CI build to cover fuzz target by @dtolnay
+- Added from_slice fuzzer. by @DavidKorczynski
+- Add test for {:#?} format of Value by @dtolnay
+- Add Windows CI in GitHub Actions by @dtolnay
+- Add value::to_raw_value by @jplatte
+- Add user-friendly error when no alloc or std feature are enabled
+- Add facade around std/alloc/core like serde does
+- Add alloc/no_std support
+- Add append to Map
+- Add example for how to update value if one exists
+- Add `impl From<()> for Value`
+- Added missing fake_main #522
+- Address needless_doctest_main lint
+- Add note about issue 160 to from_reader function
+- Add a note about buffering in from_reader
+- Address into_iter_on_ref lint
+- Address needless_lifetimes lint in decode_hex_escape
+- Add Default for Box<RawValue>
+- Add a method to construct RawValue from String without allocation
+- Add a Travis step to test raw_value
+- Address needless_return lint
+- Add some rules to catch json macro syntax errors
+- Add tests for map with char keys
+- Add values_mut() iterator for serde_json::Map
+- Add `Value::take` method
+- Support top-level primitives in StreamDeserializer
+- Add error banner when running test suite without nightly compiler
+- Add ErrorCode::TrailingComma
+- Add license info to value files
+- Add test for borrowed map key
+- Add an example of to_value that fails
+- Add appveyor badge to crates.io
+- Add playground links to readme
+- Add a note about skipping over valid JSON
+- Support borrowing in from_slice
+- Support deserializing borrowed &str and &[u8]
+- Add 'de lifetime to Read trait
+- Add 'de lifetime to deserializer
+- Add test for {:#} representation of Value
+- Add char tests
+- Add entry API and expose map module
+- Fix #256: support deserializing strings with arbitrary bytes
+- Add `impl FromIterator<T> for Value`
+- Add a short example to `<Value as Index>::index`
+- Add a short example to Value::pointer
+- Add crates.io category and travis badge
+- Add comment about sealed Index trait
+- Add test for comma within array element
+- Add a tt-muncher for constructing Value
+- Add recommended Cargo.toml line to readme
+- Add builds for supported old versions
+- Add comment about self.slice.get(self.index) being slow
+- Add preserve_order feature
+- Add newline
+- Add helper function to parse stream of json values
+- Add custom_derive
+- Add an example struct corresponding to example json
+- Add cargo metadata
+- Add coveralls badge
+- Add licenses
+- Add examples and json byte tests
+- Add a readme
+
+### Changed
+
+- Create release automation workflows by @jost-s in [#1](https://github.com/holochain/serde-json/pull/1)
+- Ignore mismatched_lifetime_syntaxes lint by @dtolnay
+- Pin nightly toolchain used for miri job by @dtolnay
+- Merge pull request #1248 from jimmycathy/master by @dtolnay
+- Release 1.0.140 by @dtolnay
+- Merge pull request #1245 from serde-rs/powerpc by @dtolnay
+- Delete unused gcc installation by @dtolnay
+- Ignore unbuffered_bytes clippy lint by @dtolnay
+- Ignore elidable_lifetime_names pedantic clippy lint by @dtolnay
+- Point standard library links to stable by @dtolnay
+- Release 1.0.139 by @dtolnay
+- Merge pull request #1242 from dtolnay/writefloat by @dtolnay
+- Document behavior of write_f32/f64 on non-finite floats by @dtolnay
+- Merge pull request #1241 from dtolnay/doclink by @dtolnay
+- Convert html links to intra-doc links by @dtolnay
+- Unset doc-scrape-examples for lib target by @dtolnay
+- Resolve unnecessary_semicolon pedantic clippy lint by @dtolnay
+- Release 1.0.138 by @dtolnay
+- Move BufReader to caller by @dtolnay
+- Sort imports from PR 1237 by @dtolnay
+- Merge pull request #1237 from JonathanBrouwer/master by @dtolnay
+- Fix example of from_reader not applying buffering when it should by @JonathanBrouwer
+- More precise gitignore patterns by @dtolnay
+- Release 1.0.137 by @dtolnay
+- Merge pull request #1231 from dtolnay/playground by @dtolnay
+- Enable "float_roundtrip" and "unbounded_depth" features in playground by @dtolnay
+- Release 1.0.136 by @dtolnay
+- Merge pull request #1230 from goffrie/patch-1 by @dtolnay
+- Use Map::with_capacity in value::Serializer::serialize_map by @goffrie
+- Release 1.0.135 by @dtolnay
+- Merge pull request #1226 from tisonkun/map-into-values by @dtolnay
+- Resolve precedence clippy lint by @dtolnay
+- Release 1.0.134 by @dtolnay
+- Tweak wording of NULL/TRUE/FALSE documentation by @dtolnay
+- Merge pull request #1222 from dtolnay/rawvalueassoc by @dtolnay
+- Move RawValue associated constants into same impl block as public functions by @dtolnay
+- Merge pull request #1221 from bheylin/add-const-raw-values-for-null-and-bools by @dtolnay
+- Release 1.0.133 by @dtolnay
+- Merge pull request #1215 from dtolnay/fromarray by @dtolnay
+- Implement From<[T; N]> for Value by @dtolnay
+- Disable question_mark clippy lint in lexical test by @dtolnay
+- Resolve unnecessary_map_or clippy lints by @dtolnay
+- Wrap PR 1213 to 80 columns by @dtolnay
+- Merge pull request #1213 from djmitche/safety-comment by @dtolnay
+- Prevent upload-artifact step from causing CI failure by @dtolnay
+- Raise minimum version for preserve_order feature to Rust 1.65 by @dtolnay
+- Update ui test suite to nightly-2024-10-31 by @dtolnay
+- Release 1.0.132 by @dtolnay
+- Merge pull request #1206 from dtolnay/hasnext by @dtolnay
+- Clearer order of comparisons by @dtolnay
+- Handle early return sooner on eof in seq or map by @dtolnay
+- Rearrange 'match peek' by @dtolnay
+- Merge pull request #1205 from dtolnay/hasnext by @dtolnay
+- Reduce duplicative instantiation of logic in SeqAccess and MapAccess by @dtolnay
+- Release 1.0.131 by @dtolnay
+- Touch up PR 1135 by @dtolnay
+- Merge pull request #1135 from swlynch99/map-deserializer by @dtolnay
+- Clean up deserialize_enum methods on Value and &Value by @swlynch99
+- Clean up visit_object and visit_object_ref by @swlynch99
+- Implement Deserializer for Map<String, Value> and &Map<String, Value> by @swlynch99
+- Release 1.0.130 by @dtolnay
+- Merge pull request #1204 from dtolnay/u128 by @dtolnay
+- Merge pull request #1203 from dtolnay/i128err by @dtolnay
+- Return error instead of Null if i128 deserialized to Value is out of range by @dtolnay
+- Delete Number conversion example code by @dtolnay
+- Delete Value::as_i128 by @dtolnay
+- Update Number::from_i128 documentation regarding bounds by @dtolnay
+- Merge pull request #1202 from dtolnay/useprimitive by @dtolnay
+- Delete unneeded imports in doc code by @dtolnay
+- Delete #[inline] from some Number methods by @dtolnay
+- Merge pull request #1201 from dtolnay/from128 by @dtolnay
+- Allow arbitrarily large i128 in arbitrary_precision mode by @dtolnay
+- Flatten logic in Number::from_i128 by @dtolnay
+- Merge pull request #1200 from dtolnay/from128 by @dtolnay
+- Delete unreachable branch from Number::from_i128 by @dtolnay
+- Format PR 1141 with rustfmt by @dtolnay
+- Merge pull request #1141 from druide/master by @dtolnay
+- Fix tests by @druide
+- Improve rendering of sort_keys documentation by @dtolnay
+- Release 1.0.129 by @dtolnay
+- Merge pull request #1199 from dtolnay/sort by @dtolnay
+- Ignore needless_lifetimes clippy lint by @dtolnay
+- Resolve some needless_lifetimes clippy lints by @dtolnay
+- Resolve empty_line_after_doc_comments clippy lint in lexical by @dtolnay
+- Replace bool::to_string with if by @dtolnay
+- Replace str::to_string with to_owned by @dtolnay
+- Replace char::to_string with encode_utf8 by @dtolnay
+- Replace integer to_string with itoa by @dtolnay
+- Replace f64::to_string with ryu by @dtolnay
+- Release 1.0.128 by @dtolnay
+- Merge pull request #1188 from Mrreadiness/feat/add-hashmap-key-128-serializer by @dtolnay
+- Upload CI Cargo.lock for reproducing failures by @dtolnay
+- Release 1.0.127 by @dtolnay
+- Merge pull request 1179 from GREsau/patch-1 by @dtolnay
+- Release 1.0.126 by @dtolnay
+- Merge pull request #1184 from serde-rs/fastarithmetic by @dtolnay
+- Improve cfg names for fast arithmetic by @dtolnay
+- Merge pull request #1183 from serde-rs/arithmetic by @dtolnay
+- Unify chunk size choice between float and string parsing by @dtolnay
+- Merge pull request #1182 from CryZe/chunk-64bit by @dtolnay
+- Ensure the SWAR chunks are 64-bit in more cases by @CryZe
+- Merge pull request #1178 from iex-rs/tiny-bit-faster-hex by @dtolnay
+- Optimize Unicode decoding by 1% by @purplesyringa
+- Release 1.0.125 by @dtolnay
+- Touch up PR 1175 by @dtolnay
+- Merge pull request 1175 from iex-rs/faster-backslash-u by @dtolnay
+- Deserialize invalid UTF-8 into byte bufs as WTF-8 by @lucacasonato
+- Correct WTF-8 parsing by @purplesyringa
+- Simplify unicode escape handling by @purplesyringa
+- Use the same UTF-8/WTF-8 impl for surrogates by @purplesyringa
+- Format UTF-8 strings manually by @purplesyringa
+- Mark \u parsing as cold by @purplesyringa
+- Merge pull request #1172 from iex-rs/faster-hex by @dtolnay
+- Parse \uXXXX escapes faster by @purplesyringa
+- Merge pull request #1176 from dtolnay/miriname by @dtolnay
+- Improve job names for miri jobs by @dtolnay
+- Merge pull request #1174 from iex-rs/miri-on-ci by @dtolnay
+- Test on BE and 32-bit platforms on CI via Miri by @purplesyringa
+- Release 1.0.124 by @dtolnay
+- Merge pull request #1173 from iex-rs/fix-big-endian by @dtolnay
+- Fix skip_to_escape on BE architectures by @purplesyringa
+- Release 1.0.123 by @dtolnay
+- Fix needless_borrow clippy lint in new control character test by @dtolnay
+- Merge pull request #1161 from iex-rs/vectorized-string-parsing by @dtolnay
+- Immediately bail-out on empty strings by @purplesyringa
+- Don't run the slow algorithm from the beginning by @purplesyringa
+- Allow clippy::items_after_statements by @purplesyringa
+- Big endian support by @purplesyringa
+- Inline memchr2 logic into Mycroft's algorithm by @purplesyringa
+- Bring MSRV down by @purplesyringa
+- Replace ESCAPE array with is_escape fn by @purplesyringa
+- Vectorize string parsing by @purplesyringa
+- Release 1.0.122 by @dtolnay
+- Work around buggy rust-analyzer behavior by @dtolnay
+- Merge pull request #1166 from dtolnay/allocvec by @dtolnay
+- Fix json! invocations when std prelude is not in scope by @dtolnay
+- Merge pull request #1165 from serde-rs/jsonmac by @dtolnay
+- Eliminate local_inner_macros in favor of non-ident macro paths by @dtolnay
+- Release 1.0.121 by @dtolnay
+- Merge pull request #1160 from iex-rs/efficient-position by @dtolnay
+- Optimize position search in error path by @purplesyringa
+- Merge pull request #1159 from iex-rs/fix-recursion by @dtolnay
+- Move call to tri! out of check_recursion! by @purplesyringa
+- Ignore byte_char_slices clippy lint in test by @dtolnay
+- Merge pull request #1153 from dpathakj/master by @dtolnay
+- Correct documentation URL for Value's Index impl. by @dpathakj
+- Release 1.0.120 by @dtolnay
+- Merge pull request #1152 from cforycki/fix/index-map-minimal-version by @dtolnay
+- Release 1.0.119 by @dtolnay
+- Make shift_insert available for inlining like other Map methods by @dtolnay
+- Document the cfg required for Map::shift_insert to exist by @dtolnay
+- Merge pull request #1149 from joshka/master by @dtolnay
+- Merge pull request #1146 from haouvw/master by @dtolnay
+- Release 1.0.118 by @dtolnay
+- Combine Map's Hash into one impl by @dtolnay
+- Touch up PR 1127 by @dtolnay
+- Resolve semicolon_if_nothing_returned pedantic clippy lint from PR 1127 by @dtolnay
+- Merge pull request #1127 from edwardycl/hash by @dtolnay
+- Impl `Hash` for `Value` by @edwardycl
+- Another lexical const that is unused, though not in test by @dtolnay
+- Delete unused associated constant from lexical by @dtolnay
+- Fill in ignore reasons in all #[ignore] attributes by @dtolnay
+- Run more of test suite in preserve_order mode by @dtolnay
+- Ignore large_digit_groups pedantic clippy lint in test by @dtolnay
+- Resolve needless_raw_string_hashes pedantic clippy lint in test by @dtolnay
+- Merge pull request #1136 from dtolnay/docsrs by @dtolnay
+- Rely on docs.rs to define --cfg=docsrs by default by @dtolnay
+- Release 1.0.117 by @dtolnay
+- PartialEq is not implemented between Value and 128-bit ints by @dtolnay
+- Combine number PartialEq tests by @dtolnay
+- Merge pull request #1130 from serde-rs/checkcfg by @dtolnay
+- Resolve unexpected_cfgs warning by @dtolnay
+- Release 1.0.116 by @dtolnay
+- Hide "non-exhaustive patterns" errors when crate fails to compile by @dtolnay
+- Merge pull request 1124 from mleonhard/master by @dtolnay
+- Replace `features_check` mod with a call to `std::compile_error!`.  Fixes https://github.com/serde-rs/json/issues/1123 . by @mleonhard
+- Revert "Temporarily disable miri on doctests" by @dtolnay
+- Resolve legacy_numeric_constants clippy lints by @dtolnay
+- Release 1.0.115 by @dtolnay
+- Merge pull request #1119 from titaniumtraveler/pr by @dtolnay
+- Fix missing backticks in doc comments by @titaniumtraveler
+- Explicitly install a Rust toolchain for cargo-outdated job by @dtolnay
+- Temporarily disable miri on doctests by @dtolnay
+- Format regression tests with rustfmt by @dtolnay
+- Ignore dead code lint in tests by @dtolnay
+- Merge pull request #1118 from serde-rs/transparent by @dtolnay
+- Ignore non_local_definitions false positive in test by @dtolnay
+- Release 1.0.114 by @dtolnay
+- Work around prelude redundant import warnings by @dtolnay
+- Ignore incompatible_msrv clippy false positives in test by @dtolnay
+- Release 1.0.113 by @dtolnay
+- Merge pull request #1109 from serde-rs/remove by @dtolnay
+- Release 1.0.112 by @dtolnay
+- Merge pull request #1107 from serde-rs/unexpectedfloat by @dtolnay
+- Format f64 in error messages using ryu by @dtolnay
+- Merge pull request #1106 from serde-rs/invalidvalue by @dtolnay
+- Handle Unexpected::Unit in Error::invalid_value by @dtolnay
+- Factor out JSON-specific Display impl for serde::de::Unexpected by @dtolnay
+- Merge pull request #1105 from keienWang/master by @dtolnay
+- Ignore unconditional_recursion clippy lint due to false positive by @dtolnay
+- Release 1.0.111 by @dtolnay
+- Merge pull request #1100 from heiher/limb-64-la64 by @dtolnay
+- Set limb width to 64 for loongarch64 by @heiher
+- Release 1.0.110 by @dtolnay
+- Pull in proc-macro2 sccache fix by @dtolnay
+- Release 1.0.109 by @dtolnay
+- Merge pull request #1097 from serde-rs/doccfg by @dtolnay
+- Restore doc cfg on re-exports by @dtolnay
+- Merge pull request #1095 from dtolnay/hashtest by @dtolnay
+- Eliminate hash closure in favor of calling hash_one directly by @dtolnay
+- Use BuildHasher::hash_one by @dtolnay
+- Use random hasher state for number hashing test by @dtolnay
+- Delete trace_macros! functionality from test by @dtolnay
+- Update ui test suite to nightly-2023-11-19 by @dtolnay
+- Release 1.0.108 by @dtolnay
+- Merge pull request #1082 from dtolnay/fromdoc by @dtolnay
+- Improve Value From and FromIterator docs by @dtolnay
+- Merge pull request #1081 from fritzrehde/master by @dtolnay
+- Merge pull request #1080 from serde-rs/negativenan by @dtolnay
+- Fix unused imports by @dtolnay
+- Merge pull request #1075 from dimo414/master by @dtolnay
+- Test docs.rs documentation build in CI by @dtolnay
+- Release 1.0.107 by @dtolnay
+- Merge pull request #1073 from dtolnay/rawvalue by @dtolnay
+- IntoDeserializer for &RawValue by @dtolnay
+- Merge pull request #1072 from dtolnay/rawvalue by @dtolnay
+- Merge pull request #1062 from osiewicz/remove_build_rs by @dtolnay
+- Omit return keyword in `remove_entry` by @osiewicz
+- Revert "Remove limb_width32 and limb_width64 features" by @osiewicz
+- Remove no_btreemap_get_key_value and no_btreemap_remove_entry. by @osiewicz
+- Remove no_btreemap_retain feature from build.rs by @osiewicz
+- Release 1.0.106 by @dtolnay
+- Elaborate on documentation of Number::as_str by @dtolnay
+- Touch up PR 1067 by @dtolnay
+- Merge pull request #1067 from chanced/add-as_str-to-number by @dtolnay
+- Improves `Number::as_str` doc example by @chanced
+- Fix unintended u8 link inferred by intra doc link by @dtolnay
+- Resolve rustdoc::redundant_explicit_links lint by @dtolnay
+- Fix documentation typo from PR 1069 by @dtolnay
+- Reorder Value::as_number after is_number by @dtolnay
+- Wrap as_number documentation to 80 columns by @dtolnay
+- Delete trailing whitespace from PR 1069 by @dtolnay
+- Merge pull request 1069 from chanced/add-as_number-to-value by @dtolnay
+- Minor cleanup of documentation for `Value::as_number` by @chanced
+- Update actions/checkout@v3 -> v4 by @dtolnay
+- Release 1.0.105 by @dtolnay
+- Merge pull request #1055 from dtolnay/boolkey by @dtolnay
+- Delete test_serialize_rejects_bool_keys by @dtolnay
+- Resolve ignored_unit_patterns pedantic clippy lint by @dtolnay
+- Release 1.0.104 by @dtolnay
+- Merge pull request #1045 from ZetaNumbers/value-ref-into-deserializer by @dtolnay
+- Implement IntoDeserializer for &Value by @zetanumbers
+- Delete inline attributes throughout test suite by @dtolnay
+- Release 1.0.103 by @dtolnay
+- Opt in to generate-link-to-definition when building on docs.rs by @dtolnay
+- Fix rustdoc::bare_urls lint in lexical code by @dtolnay
+- Release 1.0.102 by @dtolnay
+- Merge pull request #1039 from dtolnay/writebytearray by @dtolnay
+- Factor out byte array serialization to a new Formatter method by @dtolnay
+- Inline Serializer::serialize_u8 into serialize_bytes by @dtolnay
+- Inline u8::serialize into serialize_bytes by @dtolnay
+- Simplify serialize_bytes by @dtolnay
+- Inline SerializeSeq::end into serialize_bytes by @dtolnay
+- Inline SerializeSeq::serialize_element into serialize_bytes by @dtolnay
+- Inline Serializer::serialize_seq into serialize_bytes by @dtolnay
+- Format PR 1037 with rustfmt by @dtolnay
+- Release 1.0.101 by @dtolnay
+- Merge pull request #1037 from dtolnay/numkey by @dtolnay
+- Insert check for whitespace surrounding numeric map key by @dtolnay
+- Directly use caller's Visitor to deserialize numeric key from Value by @dtolnay
+- Delete str fallback for Value numeric key methods by @dtolnay
+- Inline de::from_trait into deserialize_numeric_key by @dtolnay
+- Make number deserialization usable on text that lives shorter than input data by @dtolnay
+- Merge adjacent integer key tests by @dtolnay
+- Rewrap PR 1027 comments to 80 columns and reword by @dtolnay
+- Deduplicate a bunch of identical deserialize_numeric_key expansions by @dtolnay
+- Straighten control flow of deserialize_numeric_key by @dtolnay
+- Delete dedicated whitespace-in-key error message by @dtolnay
+- Merge pull request #1036 from dtolnay/nll by @dtolnay
+- Enforce no use of question-mark operator by @dtolnay
+- Buggy iter_not_returning_iterator lint has been fixed in clippy by @dtolnay
+- Buggy ptr_arg lint has been fixed in clippy by @dtolnay
+- Resolve unnested_or_patterns pedantic clippy lint by @dtolnay
+- Merge pull request #1035 from dtolnay/numkey by @dtolnay
+- Improve error message on invalid numeric key by @dtolnay
+- Merge pull request #1027 from overdrivenpotato/float-key by @dtolnay
+- Return error if numeric key starts with whitespace by @overdrivenpotato
+- Use Deserializer::* methods instead of `.parse()` for integer keys by @overdrivenpotato
+- Parse `Value::Map` numeric keys using `crate::from_str` by @overdrivenpotato
+- Use `ryu` directly when formatting float keys by @overdrivenpotato
+- Fix builds without `std` feature by @overdrivenpotato
+- Fix formatting by @overdrivenpotato
+- Deserialize float keys using `deserialize_number` by @overdrivenpotato
+- Print map float keys with `CompactFormatter` by @overdrivenpotato
+- Return error on non-finite float keys by @overdrivenpotato
+- Allow f32 and f64 keys by @overdrivenpotato
+- Fix bare trait in to_value doc example code by @dtolnay
+- Update to 2021 edition by @dtolnay
+- Release 1.0.100 by @dtolnay
+- No pre_ci in this repo by @dtolnay
+- Eliminate syn 1 from minimal-versions by @dtolnay
+- Sort Cargo.toml dependencies list by @dtolnay
+- Resolve explicit_iter_loop pedantic clippy lint by @dtolnay
+- Release 1.0.99 by @dtolnay
+- Merge pull request 1030 from SecondHalfGames/map-key-serialize-some by @dtolnay
+- Change MapKeySerializer::serialize_some to fall through instead of erroring by @LPGhatguy
+- Release 1.0.98 by @dtolnay
+- Merge pull request #1031 from serde-rs/indexmap by @dtolnay
+- Do all CI builds with old rustc using shim crate by @dtolnay
+- Move serde_json_test crate to own workspace by @dtolnay
+- Update indexmap dependency used for preserve_order feature to version 2 by @dtolnay
+- Delete unneeded conditional on preserve_order steps in CI by @dtolnay
+- Release 1.0.97 by @dtolnay
+- Merge pull request #1026 from dtolnay/errorkind by @dtolnay
+- Merge pull request #1025 from dtolnay/io by @dtolnay
+- Standardize on "I/O" instead of "IO" by @dtolnay
+- Merge pull request 1021 from ndmitchell/patch-2 by @dtolnay
+- Switch to using null by @ndmitchell
+- Show error details during miri setup in CI by @dtolnay
+- Release 1.0.96 by @dtolnay
+- Merge pull request #1011 from stepancheg/utf-8 by @dtolnay
+- Document to_writer only writes valid UTF-8 strings by @stepancheg
+- Fix needless_borrow clippy lint in test by @dtolnay
+- Release 1.0.95 by @dtolnay
+- Merge pull request #1005 from dtolnay/f32cast by @dtolnay
+- Fix PartialEq between Value and f32 by @dtolnay
+- Eliminate f32-to-f64 casting in arbitrary_precision mode by @dtolnay
+- Update fuzz crate gitignore to ignore coverage dir by @dtolnay
+- No longer test so many old compiler versions by @dtolnay
+- Release 1.0.94 by @dtolnay
+- Merge pull request #992 from dtolnay/errorsource by @dtolnay
+- Fix message duplication between error Display and source() by @dtolnay
+- Ignore let_underscore_untyped pedantic clippy lint by @dtolnay
+- Release 1.0.93 by @dtolnay
+- Merge pull request #982 from serde-rs/integer128tovalue by @dtolnay
+- Release 1.0.92 by @dtolnay
+- Merge pull request #980 from serde-rs/docrepr by @dtolnay
+- Hide repr attribute from documentation by @dtolnay
+- RawValue -> repr(transparent) by @dtolnay
+- Update indoc dev-dependency to version 2 by @dtolnay
+- Speed up cargo fuzz CI job by @dtolnay
+- Sync license text with rust-lang repos by @dtolnay
+- Merge pull request #964 from dtolnay/docsrs by @dtolnay
+- Replace docs.serde.rs links with intra-rustdoc links by @dtolnay
+- Point documentation links to docs.rs instead of docs.serde.rs by @dtolnay
+- Release 1.0.91 by @dtolnay
+- Opt out -Zrustdoc-scrape-examples on docs.rs by @dtolnay
+- Release 1.0.90 by @dtolnay
+- Replace ancient CI service provider in readme by @dtolnay
+- Update build status badge by @dtolnay
+- Prevent build.rs rerunning unnecessarily on all source changes by @dtolnay
+- Time out workflows after 45 minutes by @dtolnay
+- Fix renamed let_underscore_drop lint by @dtolnay
+- Resolve needless_borrowed_reference clippy lints by @dtolnay
+- Release 1.0.89 by @dtolnay
+- Merge pull request #956 from dtolnay/decimal by @dtolnay
+- Require at least one digit after decimal point by @dtolnay
+- Resolve semicolon_if_nothing_returned pedantic clippy lint by @dtolnay
+- Release 1.0.88 by @dtolnay
+- Merge pull request #952 from Lucretiel/map-traits by @dtolnay
+- Update ui test suite to nightly-2022-11-16 by @dtolnay
+- Resolve needless_borrow pedantic clippy lint in test by @dtolnay
+- Release 1.0.87 by @dtolnay
+- Eliminate needless 'tri!' from Serializer impl by @dtolnay
+- Merge pull request #942 from serde-rs/integer128 by @dtolnay
+- Assume serde_if_integer128 is true by @dtolnay
+- Use existing macros to implement 128-bit From impls by @dtolnay
+- Merge pull request #941 from serde-rs/alloc by @dtolnay
+- Delete 1.36+ caveat from descriptions of alloc feature by @dtolnay
+- Merge pull request 940 from Lucretiel/int128 by @dtolnay
+- Release 1.0.86 by @dtolnay
+- Reorganize number.rs imports by @dtolnay
+- Merge pull request #928 from kvinwang/nostd-arbp by @dtolnay
+- Arbitrary_precision without std by @kvinwang
+- GitHub Workflows security hardening by @dtolnay
+- Resolve manual_string_new pedantic clippy lint in test by @dtolnay
+- Resolve needless_borrow clippy lints by @dtolnay
+- Ignore using destructuring assignment to wildcard pattern by @dtolnay
+- Release 1.0.85 by @dtolnay
+- Merge pull request #919 from serde-rs/displaynum by @dtolnay
+- Make Display for Number produce the same representation as serializing by @dtolnay
+- Preserve '.0' when Displaying Number by @dtolnay
+- Release 1.0.84 by @dtolnay
+- Revert "Avoid cargo 1.45–1.50 in GitHub Actions" by @dtolnay
+- Merge pull request #918 from serde-rs/debug by @dtolnay
+- Reduce unneeded parens and newlines in Debug for Value by @dtolnay
+- Make Debug test compatible with preserve_order by @dtolnay
+- Cover all the Value variants in indented Debug test by @dtolnay
+- Move expected value for indented debug test into test by @dtolnay
+- Avoid cargo 1.45–1.50 in GitHub Actions by @dtolnay
+- Release 1.0.83 by @dtolnay
+- Sort package entries in Cargo.toml by @dtolnay
+- Ignore assertions_on_result_states clippy lint by @dtolnay
+- Avoid cargo 1.43–1.45 in GitHub Actions by @dtolnay
+- Convert i/u128 conversion to itoa instead of std::fmt by @dtolnay
+- Directly install aarch64-unknown-none target support by @dtolnay
+- Update ui test suite to nightly-2022-07-20 by @dtolnay
+- Ignore explicit_auto_deref clippy lint by @dtolnay
+- Speed up fuzz build in CI using precompiled cargo-fuzz by @dtolnay
+- Release 1.0.82 by @dtolnay
+- Merge pull request #900 from kvnvelasco/implement_from_option_for_value by @dtolnay
+- Don't use experimental (in 1.36) Self:: access for enums by @kvnvelasco
+- Make Value be From<Option<T>> by @kvnvelasco
+- Bump oldest rustc for preserve_order feature to 1.56.1 by @dtolnay
+- Merge pull request #895 from dtolnay/ref by @dtolnay
+- Eliminate all use of ref keyword by @dtolnay
+- Resolve borrow_deref_ref clippy lint by @dtolnay
+- Resolve get_first clippy lint by @dtolnay
+- Check for outdated deps in fuzz target by @dtolnay
+- Ignore derive_partial_eq_without_eq clippy lint by @dtolnay
+- Update fuzz manifest to match cargo fuzz's new template by @dtolnay
+- Ignore unused_macro_rules warning in test macros by @dtolnay
+- Run miri in stricter miri-strict-provenance mode by @dtolnay
+- Merge pull request #889 from dzvon/patch-1 by @dtolnay
+- Fix a typo by @dzvon
+- Release 1.0.81 by @dtolnay
+- Make it clearer that preserve_order implies a std dependency by @dtolnay
+- Merge pull request #885 from cuviper/indexmap-std by @dtolnay
+- Explicitly enable indexmap/std by @cuviper
+- Ignore trait_duplication_in_bounds clippy false positives by @dtolnay
+- Resolve type_repetition_in_bounds clippy lint by @dtolnay
+- Release 1.0.80 by @dtolnay
+- Pull miri from miri branch of dtolnay/rust-toolchain by @dtolnay
+- Drop unneeded quoting from env variable in workflows yaml by @dtolnay
+- Update workflows to actions/checkout@v3 by @dtolnay
+- Fix dev dependencies on serde's derive feature by @dtolnay
+- Rewrap readme to 80 columns by @dtolnay
+- Apply readme changes from PR 864 to crate-level rustdoc by @dtolnay
+- Merge pull request 864 from novedevo/patch-1 by @dtolnay
+- Tweak grammar to improve readability by @novedevo
+- Release 1.0.79 by @dtolnay
+- Merge pull request #830 from lucacasonato/support_lone_surrogates_in_raw_value by @dtolnay
+- Allow lone surrogates in raw values by @lucacasonato
+- Ignore buggy ptr_arg clippy lint by @dtolnay
+- Resolve needless_borrow clippy lint by @dtolnay
+- Release 1.0.78 by @dtolnay
+- Move raw_value test imports to block of imports by @dtolnay
+- Merge pull request #851 from serde-rs/rawkey by @dtolnay
+- Release 1.0.77 by @dtolnay
+- Improve error on compiling with neither std nor alloc by @dtolnay
+- Include integration tests in published package by @dtolnay
+- Release 1.0.76 by @dtolnay
+- Fix imports on features +alloc +raw_value -std by @dtolnay
+- Release 1.0.75 by @dtolnay
+- Merge pull request #848 from serde-rs/num by @dtolnay
+- Deserialize small numbers as integers in arbitrary_precision by @dtolnay
+- Disable buggy iter_not_returning_iterator lint by @dtolnay
+- Raise toolchain version for preserve_order to rust 1.46 by @dtolnay
+- Set miriflags once for whole miri job by @dtolnay
+- Run miri also with some features enabled by @dtolnay
+- Release 1.0.74 by @dtolnay
+- Detect warnings in CI by @dtolnay
+- Merge pull request 841 from EFanZh/unsized-value-to-raw-value by @dtolnay
+- Allow creating `RawValue`s from references to unsized values by @EFanZh
+- Avoid evaluating $c more than once in overflow macro by @dtolnay
+- Eliminate lib module by @dtolnay
+- Switch to $(,)? in tri macro by @dtolnay
+- Unconditionally import from alloc by @dtolnay
+- Ignore return_self_not_must_use clippy lint by @dtolnay
+- Release 1.0.73 by @dtolnay
+- Update to itoa 1.0 by @dtolnay
+- Track raw pointers in miri CI run by @dtolnay
+- Disable TcpStream test on miri by @dtolnay
+- Raise required rustc from 1.31 to 1.36 by @dtolnay
+- Collect imports to top of test suite by @dtolnay
+- Skip ui test when running in miri by @dtolnay
+- Ignore needless_late_init Clippy lint by @dtolnay
+- Merge pull request #831 from serde-rs/from_u32 by @dtolnay
+- Skip error codepath on hex escape outside the surrogate range by @dtolnay
+- Release 1.0.72 by @dtolnay
+- Merge pull request #829 from serde-rs/surrogate by @dtolnay
+- Move discard of expected byte immediately after peek by @dtolnay
+- Rearrange the early return on lone or encoded surrogate by @dtolnay
+- Use binary mask to line up visually with the bits being |'d in by @dtolnay
+- Extract common logic of surrogate encode by @dtolnay
+- Document why the parse_escape recursion is not dangerous by @dtolnay
+- Tail recurse on parse_escape by @dtolnay
+- Collapse surrogate encode into extend_from_slice call by @dtolnay
+- Touch up doc changes from PR 828 by @dtolnay
+- Merge pull request #828 from lucacasonato/lone_surrogate by @dtolnay
+- Deserialize lone surrogates into byte bufs by @lucacasonato
+- Elaborate on StrRead::parse_str safety comment by @dtolnay
+- Release 1.0.71 by @dtolnay
+- Consolidate unsafe RawValue transmutes in one place by @dtolnay
+- Merge pull request #824 from jplatte/box-raw-value-to-underlying by @dtolnay
+- Merge pull request #821 from timothee-haudebourg/get_key_value by @dtolnay
+- Disable `get_key_value` with older  Rust versions.
+- Release 1.0.70 by @dtolnay
+- Reorder Map::retain to keep keys() and values() adjacent by @dtolnay
+- Merge pull request 822 from deankarn/master by @dtolnay
+- Merge branch 'master' of github.com:deankarn/json
+- Update build.rs
+- Don't include indexmap retain without BTreeMap retain
+- Only include retain for BTreeMap if Rust 1.53.0+
+- Release 1.0.69 by @dtolnay
+- Touch up PR 814 by @dtolnay
+- Merge pull request #814 from timothee-haudebourg/hash-numbers-only by @dtolnay
+- Use the same hash for +0 and -0.
+- Fix `NaN` typo.
+- Better justification for the use of `f64::to_bits`
+- Avoid `Self::` for older Rust versions.
+- Manual implementation of `Number`'s `PartialEq`.
+- Use `core::hash` instead of `std::hash`.
+- Discard `ordered_float`, use custom `Hash` impl.
+- Do not import `ordered_float` default features.
+- Do not import always `NotNan`.
+- Do not show `NotNan` in `Number`'s `Debug` impl.
+- Impl`Eq+Hash` for `Number` using `ordered_float`.
+- Revert "Disable broken fuzz build in CI" by @dtolnay
+- Update ui test suite to nightly-2021-10-17 by @dtolnay
+- Ui test changes for trybuild 1.0.49 by @dtolnay
+- Update ui test files by @dtolnay
+- Declare minimum Rust version in Cargo metadata by @dtolnay
+- Resolve semicolon_if_nothing_returned pedantic clippy lint by @dtolnay
+- Resolve redundant_closure_for_method_calls pedantic clippy lint by @dtolnay
+- Resolve needless_borrow clippy lint by @dtolnay
+- Run clippy also with features enabled by @dtolnay
+- Resolve manual_str_repeat clippy lint by @dtolnay
+- Resolve semicolon_if_nothing_returned pedantic clippy lint by @dtolnay
+- Resolve needless_borrow clippy lint by @dtolnay
+- Run clippy on test suite too by @dtolnay
+- Move clippy lint level to CI job by @dtolnay
+- Skip clippy job on pull requests by @dtolnay
+- Disable broken fuzz build in CI by @dtolnay
+- Release 1.0.68 by @dtolnay
+- Merge pull request #801 from dtolnay/negative0 by @dtolnay
+- Parse -0 as float -0.0 instead of integer 0 by @dtolnay
+- Test negative zero parsing to f32 by @dtolnay
+- Suppress unused field in test_borrow_in_map_key by @dtolnay
+- Fix dead code warning in issue 795 regression test by @dtolnay
+- Ignore derivable_impls clippy false positive by @dtolnay
+- Release 1.0.67 by @dtolnay
+- Merge pull request #796 from dtolnay/visitobject by @dtolnay
+- Detect unknown struct variant fields deserializing from Value by @dtolnay
+- Merge pull request #794 from dtolnay/visitarray by @dtolnay
+- Use existing helpers for running visit_seq over a Vec/slice by @dtolnay
+- Merge pull request #793 from dtolnay/valuede by @dtolnay
+- Delete Deserializer impl from value::de::MapRefDeserializer by @dtolnay
+- Delete Deserializer impl from value::de::SeqRefDeserializer by @dtolnay
+- Delete Deserializer impl from value::de::SeqDeserializer by @dtolnay
+- Merge pull request #792 from dtolnay/valuemapde by @dtolnay
+- Delete Deserializer impl from value::de::MapDeserializer by @dtolnay
+- Release 1.0.66 by @dtolnay
+- Merge pull request #789 from serde-rs/orpattern by @dtolnay
+- Restore compatiblity with older rustc after PR 786 by @dtolnay
+- Merge pull request #786 from ruifengx/master by @dtolnay
+- Make arbitrary_precision preserve the exact string representation by @ruifengx
+- Release 1.0.65 by @dtolnay
+- Merge pull request 788 from jplatte/doc-cfg by @dtolnay
+- Document unbounded_depth, raw_value feature-gated API via doc_cfg by @jplatte
+- Update preserve_order required compiler to 1.38.0 for hashbrown by @dtolnay
+- Resolve semicolon_if_nothing_returned clippy lints by @dtolnay
+- Change readme run buttons to tab style by @dtolnay
+- Merge pull request 778 from jayeshmann/patch-1 by @dtolnay
+- Overlapping button fix by @jayeshmann
+- Merge pull request #777 from striezel-stash/fix-typos by @dtolnay
+- Update ui test suite to nightly-2021-05-14 by @dtolnay
+- Update rustdoc link to serde-json-core by @dtolnay
+- Merge pull request #773 from ratijas/patch-1 by @dtolnay
+- Update link to serde-json-core by @ratijas
+- Resolve branches_sharing_code clippy lint by @dtolnay
+- Merge pull request 770 from DavidKorczynski/patch-1 by @dtolnay
+- Fix breaking OSS-Fuzz coverage build by @DavidKorczynski
+- Merge pull request 758 from Krout0n/use-try-fold by @dtolnay
+- Use Iterator::try_fold instead of for loop in Value::pointer_functions by @Krout0n
+- Release 1.0.64 by @dtolnay
+- Fix IoRead's raw buffering on invalid utf-8 as well by @dtolnay
+- Merge pull request #757 from serde-rs/panicraw by @dtolnay
+- Fix panic deserializing RawValue from invalid utf-8 bytes by @dtolnay
+- Fix unnecessary trailing semicolon lints in test suite by @dtolnay
+- Release 1.0.63 by @dtolnay
+- Merge pull request 754 from Krout0n/entry#and_modify by @dtolnay
+- Merge pull request #752 from SamuelQZQ/patch-2 by @dtolnay
+- Fix method document in de.rs by @SamuelQZQ
+- Release 1.0.62 by @dtolnay
+- Touch up PR 751 by @dtolnay
+- Merge pull request #751 from icewind1991/value-display-utf8-unchecked by @dtolnay
+- Use from_utf8_unchecked in the fmt::Display implementation of Value by @icewind1991
+- Merge pull request #744 from Carreau/patch-1 by @dtolnay
+- Update example to use Result<User, Box<dyn Error>> by @Carreau
+- Intra-doc link for the crate::value link by @dtolnay
+- Merge pull request #739 from rory/minor-doc-improvement by @dtolnay
+- Make a html link in the doccomments
+- Release 1.0.61 by @dtolnay
+- Format with rustfmt 1.4.30-nightly by @dtolnay
+- Merge pull request #737 from imp/value_from_number by @dtolnay
+- Ignore redundant_else pedantic clippy lint by @dtolnay
+- Release 1.0.60 by @dtolnay
+- Merge pull request #733 from matklad/from-iter-of-pairs by @dtolnay
+- Allow collecting an iterator of pairs into JSON object by @matklad
+- Suppress clippy unnecessary_wraps lints by @dtolnay
+- Resolve clippy comparison_to_empty lint by @dtolnay
+- Suppress new manual_range_contains lint by @dtolnay
+- Release 1.0.59 by @dtolnay
+- Format with rustfmt 1.4.22-nightly by @dtolnay
+- Filter floats that parse to infinity from as_f64 by @dtolnay
+- Release 1.0.58 by @dtolnay
+- Fix no-std preserve_order build by @dtolnay
+- Merge pull request #712 from dtolnay/remove_entry by @dtolnay
+- Fix no-std build on rust <1.40 by @dtolnay
+- Format remove_entry cfg with rustfmt by @dtolnay
+- Simplify remove_entry cfg expressions by @dtolnay
+- Invert cfg polarity so builds without any cfg assume most recent compiler by @dtolnay
+- Use BTreeMap::get_key_value on rust 1.40-1.44 by @dtolnay
+- Use BTreeMap::remove_entry on rust 1.45+ by @dtolnay
+- Implement remove_entry when feature="preserve_order" by @dtolnay
+- Implement remove_entry for BTreeMap with support for rust 1.31 by @dtolnay
+- Ignore map_err_ignore Clippy pedantic lint by @dtolnay
+- Raise minimum preserve_order version to rust 1.36 by @dtolnay
+- Update code of conduct link by @dtolnay
+- Update to automod 1.0 by @dtolnay
+- Simplify how regression tests are imported by @dtolnay
+- Update to automod 0.2 by @dtolnay
+- Release 1.0.57 by @dtolnay
+- Clean up rustdoc representation of the &mut R Read impl by @dtolnay
+- Move Read &mut impl after other Read impls by @dtolnay
+- Merge pull request 684 from tinou98/read-mut by @dtolnay
+- Raise preserve_order required Rust version to 1.32 by @dtolnay
+- Suppress match_like_matches_macro clippy lint by @dtolnay
+- Release 1.0.56 by @dtolnay
+- Adjust wording of 'Using derive' link by @dtolnay
+- Merge pull request #685 from rimutaka/master by @dtolnay
+- Linked ReadMe to Using Derive page. by @rimutaka
+- Merge pull request #688 from dtolnay/missingcomma by @dtolnay
+- Trigger missing comma rustc suggestion by @dtolnay
+- Prevent type ascription misdiagnosis by @dtolnay
+- Ignore unnested_or_patterns suggesting unstable code by @dtolnay
+- Release 1.0.55 by @dtolnay
+- Publish with build.rs by @dtolnay
+- No need to specify Cargo.toml in package.include by @dtolnay
+- Release 1.0.54 by @dtolnay
+- Exclude single_precision flag unless needed by @dtolnay
+- Exclude lexical code when built without float_roundtrip by @dtolnay
+- Extend CI with more feature combinations by @dtolnay
+- Gate some tests behind float_roundtrip feature by @dtolnay
+- Wire up non-float_roundtrip parsing in long number case by @dtolnay
+- Restore best-effort float parse codepath by @dtolnay
+- Contrast float_roundtrip and arbitrary_precision by @dtolnay
+- Call out performance cost of float_roundtrip by @dtolnay
+- Introduce float_roundtrip cargo cfg by @dtolnay
+- Clarify explanation of preserve_order feature by @dtolnay
+- Fix arithmetic overflow in parse_decimal_overflow by @dtolnay
+- Take out some cold code from loop by @dtolnay
+- Format with rustfmt 2020-05-19 by @dtolnay
+- Merge pull request #680 from dtolnay/significand by @dtolnay
+- Deduplicate significand computation by @dtolnay
+- Cleanup in parse_integer by @dtolnay
+- Reorder float parse methods to prepare for refactor by @dtolnay
+- Print both values on failure in lexical parse test by @dtolnay
+- Take nonzero fraction into account on exponent overflow by @dtolnay
+- Clean up lexical comments by @dtolnay
+- Move scratch clear down to first place scratch is needed by @dtolnay
+- Suppress some clippy lints that trigger in all-features mode by @dtolnay
+- Resolve explicit_into_iter_loop lint by @dtolnay
+- Move trailing zero trim to lexical module by @dtolnay
+- Skip unneeded scratch clear after parsing float by @dtolnay
+- Don't need to push sole 0 in integer part by @dtolnay
+- Clean up rustfmt trailing comma glitch by @dtolnay
+- Permit trailing comma in tri macro by @dtolnay
+- Attributes on fields are now in our oldest supported compiler by @dtolnay
+- Fix f32 deserialization in arbitrary_precision mode by @dtolnay
+- Rename f32 control field by @dtolnay
+- Clean up float deserialization explanation by @dtolnay
+- Replace use of AsPrimitive on concrete types by @dtolnay
+- Ignore some clippy lints in lexical tests by @dtolnay
+- Resolve redundant_field_names lint by @dtolnay
+- Fix target arch detection for limb width by @dtolnay
+- Tone down some unused num impls by @dtolnay
+- Format macro_rules macro from lexical by @dtolnay
+- Touch up new float roundtrip test from PR 671 by @dtolnay
+- Move lexical unit tests to tests directory by @dtolnay
+- Eliminate RSliceIndex trait by @dtolnay
+- Replace some suspicious extend calls by @dtolnay
+- Resolve clippy lints in lexical by @dtolnay
+- Inline type of LimbVecType by @dtolnay
+- Unify lexical and top level lib modules by @dtolnay
+- Update de.rs use of minimal_lexical by @dtolnay
+- Update imports in lexical module by @dtolnay
+- Format lexical module with rustfmt by @dtolnay
+- Reference lexical as a module by @dtolnay
+- Import implementation of minimal-lexical by @dtolnay
+- Merge pull request #671 from japaric/gh536 by @dtolnay
+- If f32 was requested use 32-bit minimal-lexical by @japaric
+- Make clippy happy by @japaric
+- Integrate minimal-lexical by @japaric
+- Format with rustfmt 2020-05-19 by @dtolnay
+- Deal with clippy lints in tests by @dtolnay
+- Merge pull request #679 from serde-rs/verify by @dtolnay
+- Resolve match_wildcard_for_single_variants pedantic lint by @dtolnay
+- Allow but ignore trailing comma in test macros by @dtolnay
+- Be better at computer numbering by @dtolnay
+- Use https in Cargo.toml documentation link (#675) by @atouchet
+- Merge pull request #669 from dtolnay/fuzz by @dtolnay
+- Touch up PR 668 by @dtolnay
+- Merge pull request #668 from DavidKorczynski/master by @dtolnay
+- Merge pull request #666 from dtolnay/help by @dtolnay
+- Update 'Getting help' section by @dtolnay
+- Release 1.0.53 by @dtolnay
+- Downgrade some unnecessary runtime asserts to debug_assert by @dtolnay
+- Update arbitrary_precision Debug impl of Number to match normal one by @dtolnay
+- Omit a layer of unnecessary nesting from Debug impl by @dtolnay
+- Update build status badge to GitHub Actions by @dtolnay
+- Avoid repeating slow doctests and compiletests by @dtolnay
+- Merge pull request #661 from serde-rs/actions by @dtolnay
+- Enable GitHub Actions by @dtolnay
+- Release 1.0.52 by @dtolnay
+- Merge pull request #658 from jplatte/to_raw_value by @dtolnay
+- Run clippy on latest nightly that has clippy by @dtolnay
+- Mark StreamDeserializer's error codepaths as cold by @dtolnay
+- Release 1.0.51 by @dtolnay
+- Merge pull request #649 from serde-rs/fused by @dtolnay
+- Implement FusedIterator for StreamDeserializer where possible by @dtolnay
+- Implement FusedIterator for Map iterators by @dtolnay
+- Merge pull request #648 from serde-rs/streamerror by @dtolnay
+- Return None after stream deserializer has failed by @dtolnay
+- Test stream behavior after error by @dtolnay
+- Release 1.0.50 by @dtolnay
+- Merge pull request #640 from smarnach/smarnach/eq-impls by @dtolnay
+- Implement Eq for Map, Number and Value. by @smarnach
+- Release 1.0.49 by @dtolnay
+- Merge pull request #643 from serde-rs/nostd by @dtolnay
+- Improve error message when neither std nor alloc is enabled by @dtolnay
+- Provide optimized collect_str methods for Value serializer by @dtolnay
+- Don't reallocate the string in serialize_char by @dtolnay
+- Merge pull request #642 from serde-rs/sized by @dtolnay
+- Move ?Sized bounds out of generic parameter lists by @dtolnay
+- Merge pull request #641 from serde-rs/collect by @dtolnay
+- Implement collect_str for map keys by @dtolnay
+- Standardize on using Result type alias where possible by @dtolnay
+- Format with rustfmt 2020-03-11 by @dtolnay
+- Merge pull request #639 from serde-rs/map by @dtolnay
+- Simplify Map's PartialEq impl by @dtolnay
+- Select a single docs.rs build target by @dtolnay
+- Update url for "Setting up derive" page by @dtolnay
+- Suppress wildcard import pedantic lints by @dtolnay
+- Suppress buggy excessive_precision lint by @dtolnay
+- Release 1.0.48 by @dtolnay
+- Show implementation of to_value in value::Serializer docs by @dtolnay
+- Extend documentation of value::Serializer by @dtolnay
+- Merge pull request #621 from sdleffler/master by @dtolnay
+- Expose value serializer by @sdleffler
+- Ignore match_single_binding clippy lint by @dtolnay
+- Update ui tests to nightly-2020-02-08 by @dtolnay
+- Release 1.0.47 by @dtolnay
+- Merge pull request #617 from Xanewok/serde-no-std-error by @dtolnay
+- Require serde >= 1.0.100 due to no_std-related Error re-export by @Xanewok
+- Release 1.0.46 by @dtolnay
+- Fixup serialize_entry PR by @dtolnay
+- Merge pull request #614 from jmfiaschi/map-serialize-entry by @dtolnay
+- Remplace serialize key,value functions by serialize_entry by @jmfiaschi
+- Merge pull request #610 from adetaylor/edit-test-instructions by @dtolnay
+- Removing obsolete test instructions. by @adetaylor
+- Discard unimportant lines from ui tests by @dtolnay
+- Release 1.0.45 by @dtolnay
+- Copy no-std note to rustdoc by @dtolnay
+- Tweak no-std wording to show Cargo.toml snippet by @dtolnay
+- Switch rustfmt skip to tool attribute by @dtolnay
+- Merge pull request #609 from Xanewok/patch-1 by @dtolnay
+- Correct no-std support in README.md by @Xanewok
+- Adopt dyn syntax for trait objects by @dtolnay
+- Adopt inclusive range syntax by @dtolnay
+- Switch to tool attrs by @dtolnay
+- Adopt pub(crate) by @dtolnay
+- Organize imports by @dtolnay
+- Update tests to 2018 edition by @dtolnay
+- Update serde_json_test to 2018 edition by @dtolnay
+- Update to 2018 edition by @dtolnay
+- Rename try! macro to avoid 2018 edition keyword by @dtolnay
+- Raise minimum supported rustc to 1.31 by @dtolnay
+- Really disable serde std feature in CI by @dtolnay
+- Omit to_writer and Serializer in no_std mode by @dtolnay
+- Omit from_reader in no_std mode by @dtolnay
+- Preserve underlying Debug representation for io error
+- De Morgan the features check
+- Mirror serde_json features to serde_json_test crate
+- Tweak feature check message
+- Merge pull request #606 from Xanewok/no-std-patch
+- Move the core::io implementation to separate module
+- Make io a subset of `std::io`
+- Imply using alloc crate when `std` is not enabled
+- Inline the itoa::write calls
+- Test no_std/alloc on 1.36.0
+- Mention availability of alloc feature
+- Reorganize std::io facade
+- Fix std feature dependency for itoa
+- Ignore transmute_ptr_to_ptr lint
+- Resolve redundant_static_lifetimes lint
+- Merge pull request #600 from deankarn/master
+- Make compatible with older veersions of rust
+- Merge pull request #605 from Xanewok/patch-1
+- Update MSRV to 1.30 in README.md
+- Drop support for rustc <1.30
+- Provide source method for Error, to allow downcasting cause
+- Drop support for rustc <1.27
+- Opt in to experimental trybuild diffs
+- Merge pull request #595 from x3ro/doc/pointer_mut_map_example
+- Ignore missing_errors_doc pedantic lint
+- Release 1.0.44
+- Merge pull request 591 from erickt/value-into-deserializer
+- Implement IntoDeserializer for Value
+- Release 1.0.43
+- Merge pull request #590 from nlordell/bump_indexmap_version
+- Release 1.0.42
+- Merge pull request #585 from Nilix007/add_from_unit_for_value
+- Merge pull request #580 from andrisak/docs_read_without_blocking_eof
+- Fix for Document how to deserialize from a prefix of an io::Read without blocking until EOF #522
+- Ignore must_use_candidate pedantic lint
+- Upgrade to rustversion 1.0
+- Release 1.0.41
+- Document that you can't deserialize &str from reader
+- Merge pull request #571 from yankuu/patch-1
+- Minor typo in doc
+- Ignore too_many_lines lint
+- Use swap_remove on IndexMap
+- Format with rustfmt 2019-08-19
+- Include tests crate in workspace
+- Enable testing cargo build on old compilers
+- Work around rust-lang/cargo#4664
+- Switch to rustversion
+- Merge pull request #544 from est31/master
+- Release 1.0.40
+- Move raw_value feature note above the example code
+- Suppress integer_division pedantic lint
+- Update to ryu 1.0
+- Ignore old inclusive range syntax to support old compilers
+- Suppress a new pedantic lint
+- Ignore bare_trait_objects lint to support old compilers
+- Smaller format for license section
+- Switch to SPDX 2.1 license expression
+- Run ui tests on nightly only
+- Switch ui tests to trybuild
+- Update serde_bytes dependency to 0.11
+- Merge pull request #525 from 17dec/eof-numbers
+- Return EOF error on cut-off negative sign or exponent
+- Return EOF error on cut-off decimal number
+- Use non-preview name of Clippy rustup component
+- Release 1.0.39
+- Merge pull request #521 from dtolnay/f
+- Fix adjacently tagged f32 roundtrip regression
+- Format with rustfmt 2019-02-14
+- Simplify running update-references.sh
+- Release 1.0.38
+- Merge pull request #509 from dtolnay/stacker
+- More sensitive test for recursion error
+- Restore support for old compilers
+- Unbounded depth
+- Release 1.0.37
+- Work around erased-serde round-tripping through de::Error::custom
+- Release 1.0.36
+- Merge pull request #512 from dtolnay/128key
+- Quotes around u128 in map key
+- Release 1.0.35
+- Update examples to 2018 edition
+- Update ui tests to 2018 edition
+- Copyright/license headers
+- Simplify compiletest setup
+- Format lookup tables in a way that does not require rustfmt skip
+- Release 1.0.34
+- Update name of deprecated str::trim_right
+- Conditionally provide impl From<i128> and From<u128> for Number
+- Merge pull request #506 from koushiro/fix_integer128_serialize
+- Modify test
+- Fix serialization of i128 and u128 types
+- Fix name of lint that was renamed in Clippy
+- Show how to use BufReader
+- Consistently apply Example and Errors headings
+- Update ui tests for rustc nightly-2018-11-29
+- Set up Travis build names
+- Release 1.0.33
+- Merge pull request #504 from serde-rs/key
+- Allow map key to be borrowed from &Value
+- Ignore lint about rustfmt::skip
+- Format with rustfmt 0.99.6-nightly
+- Drop nightly dependency of compiletest
+- Update ui tests at nightly 2018-10-26
+- Release 1.0.32
+- Merge pull request #493 from dtolnay/overflow
+- Fix overflow on i32::min_value() as exponent
+- Merge pull request #491 from yjh0502/error_location
+- Fix playground links in readme
+- Simplify by using json Result in Read methods
+- Release 1.0.31
+- Merge pull request #489 from yjh0502/master
+- Specialize hexadecimal sequence decoding
+- Release 1.0.30
+- Non-recursive ignore_value
+- Release 1.0.29
+- Merge pull request #485 from dtolnay/raw
+- Fix malicious arbitrary precision number test
+- Fix raw value compilation on rustc older than 1.20
+- Document RawValue ownership
+- Use Box<RawValue> as the owned raw value
+- Enable raw_value feature in docs.rs and playground
+- Document RawSlice
+- Split RawSlice and RawValue
+- Simplify naming of private tokens
+- Name the RawValue private field
+- Handwrite Debug for RawValue to minimize escaping
+- Fix up some unused import warnings
+- Cfg gate everything having to do with RawValue
+- Change mapping of RawValue to a struct with one key
+- Pass data to RawValue as a string
+- Simplify raw buffer toggle
+- Implement RawValue type
+- Release 1.0.28
+- Avoid instantiating deserialize_any for KeyClassifier
+- Merge pull request #482 from dtolnay/mem
+- Tool attr syntax is not stable yet
+- Merge pull request #481 from dtolnay/ci
+- Move CI commands into travis.yml and appveyor.yml
+- Merge pull request #479 from srijs/refactor/reusable-special-types
+- Refactor to make "special" type machinery more reusable
+- Format with rustfmt 0.99.4
+- Simplify itoa code in arbitrary_precision case
+- Release 1.0.27
+- Merge pull request #476 from Enet4/docs/value_slice_u8
+- Monospace format &[u8] in value module docs
+- Release 1.0.26
+- Merge pull request #472 from dtolnay/ryu
+- Switch from dtoa to ryu
+- Release 1.0.25
+- Merge pull request #458 from dtolnay/local-inner-macros
+- Local inner macros
+- Release 1.0.24
+- Merge pull request #462 from dtolnay/unused
+- Make json macro compatible with deny(unused_results)
+- Format with rustfmt 0.8.2
+- Skip auto formatting test_stream macro
+- Revert "Local inner macros"
+- Release 1.0.23
+- Local inner macros
+- Release 1.0.22
+- Merge pull request #455 from dtolnay/eof
+- Produce eof error on truncated ident
+- Improve error message of unexpected colon or comma in json macro
+- Move Display impl for Value to value/mod.rs
+- Release 1.0.21
+- Format with rustfmt 0.8.2
+- Merge pull request #453 from fdionisi/feature/ser-char-map-key
+- Allow char to be a HashMap key
+- Release 1.0.20
+- Merge pull request #451 from lnicola/indexmap
+- Update Travis configuration to test preserve_order on 1.18
+- Use IndexMap instead of LinkedHashMap
+- Release 1.0.19
+- Release 1.0.18
+- Merge pull request #449 from serde-rs/integer128
+- Basic support for i128 and u128
+- Format with rustfmt 0.7.0
+- Update invalid length error messages for serde 1.0.52
+- Follow clippy unseparated_literal_suffix pedantic lint
+- Release 1.0.17
+- Merge pull request #439 from Diggsey/safe-eq
+- Use BTreeMap equality implementation when applicable
+- Implement order-independent equality
+- Format with rustfmt 0.6.0
+- Release 1.0.16
+- Mark error construction as cold code
+- Instantiate io::Result::<usize>::map just once
+- Map Into::into
+- Rename parser's Number to ParserNumber
+- Reduce visibility of parse_any_signed_number
+- Merge pull request #437 from serde-rs/mut
+- Merge pull request #436 from serde-rs/num
+- Drop num-traits dependency
+- Relase 1.0.15
+- Fix non-reference pattern for old compilers
+- Format with rustfmt 0.4.2
+- Struct deserialization from array Value
+- Implement all &Value deserializer hints
+- Implement all Value deserializer hints
+- Release 1.0.14
+- Merge pull request #432 from serde-rs/curl
+- Get rustup-init with curl to avoid tls failures
+- Cleaner Debug representation of Error
+- Less eye-catching rustc version badge
+- Merge pull request #431 from serde-rs/pos
+- Spell out pos -> position
+- Spell out pos -> positive
+- Merge pull request #430 from serde-rs/rustc
+- Rustc version badge
+- Clarify guarantees of the arbitrary_precision feature
+- Update ui tests for nightly-2018-03-26
+- Merge pull request #429 from serde-rs/rustfmt
+- Format with rustfmt 0.4.1
+- Link to serde-json-core crate
+- Merge pull request #426 from mtn/exp_pos
+- Replace instances of "exp_pos" with "exp_positive"
+- Release 1.0.13
+- Arbitrary-precision numerics support (#416)
+- Merge pull request #425 from mtn/positive_patch
+- Replace relevant instance of "pos" with "positive"
+- Release 1.0.12
+- Merge pull request #424 from Eijebong/itoa
+- Update itoa to 0.4
+- Ignore unreadable_literal lint in tests
+- Update ui tests for nightly-2018-03-16
+- Release 1.0.11
+- Merge pull request #421 from dmizuk/value-take
+- Update ui tests for nightly-2018-03-03
+- Release 1.0.10
+- Merge pull request #414 from boxofrox/fix/issue-364
+- Improve error when json strings contain control characters
+- Ignore redundant_field_names lint
+- Update ui tests for nightly-2018-02-26
+- Merge pull request #415 from kraai/kraai-patch-1
+- Simplify the implementation of str's index_or_insert
+- Note that eager_json depends on private API
+- Merge pull request #411 from cuviper/num-traits-0.2
+- Update to num-traits 0.2 with no_std
+- Ignore a new clippy lint
+- Merge pull request #406 from H2CO3/remove-copy-and-cleanup
+- Simplify impl FromIterator for Value::Array, and make it look consistent with the rest of the From<Collection> impls
+- Follow clippy's replace_consts lint
+- Release 1.0.9
+- Test fewer old versions
+- Hide Number implementation details from Debug representation
+- Test the debug representations of Number and Value
+- Upgrade to compiletest 0.3
+- Merge pull request #399 from serde-rs/map-or
+- Fewer instantiations of Option::map_or
+- Release 1.0.8
+- Merge pull request #392 from bouk/fix-truefalse
+- Fix falsey typo
+- Encountering an error is the cold path
+- Decrease size of ErrorCode from 32 bytes to 24 bytes
+- Make deserialize_bytes work more like deserialize_str
+- Merge pull request #390 from serde-rs/try
+- Override the try macro to eliminate From calls
+- Merge pull request #389 from serde-rs/hints
+- Implement all the deserializer hints
+- Merge pull request #388 from serde-rs/mapkey
+- Stop instantiating parse_value in MapKey::deserialize_any
+- Merge pull request #387 from serde-rs/fix-position
+- Stop instantiating fix_position so many times
+- Release 1.0.7
+- Merge pull request #384 from bouk/stream-literals
+- Update ui tests to include nightly wording change
+- Update stderr files for -Z external-macro-backtrace
+- Merge pull request #383 from xfix/patch-1
+- Warn about enum_variant_names violations in enum N
+- Release 1.0.6
+- Merge pull request #382 from ignatenkobrain/patch-2
+- Bump linked-hash-map to 0.5
+- Whitelist needless_pass_by_value lint
+- Suppress lint about fallible From<Error> for io::Error
+- Release 1.0.5
+- More detailed documentation of Index trait
+- Merge pull request #374 from sinkuu/takebyvalue
+- Adapt contributing.md from Serde
+- Clean up identity conversions
+- Release 1.0.4
+- Explain square bracket indexing in more detail
+- Merge pull request #368 from twify93/patch-1
+- README - add additional info about untyped Example
+- Comma outside of array or object is not necessarily trailing
+- Update ui test failure message
+- Merge pull request #353 from fmoor/feature/trailing_comma
+- Change error type for trailing commas, fixes #352
+- Release 1.0.3
+- Merge pull request #356 from serde-rs/ignore
+- Optimize deserialize_ignored_any
+- Ignore cast_lossless lint
+- Ignore clippy's use_self lint
+- Replace deprecated compiletest::default_config()
+- Update ui error message
+- Merge pull request #338 from foriequal0/master
+- Implement PartialEq<bool> for Value
+- Update ui error message
+- Test rust 1.15.0
+- Refresh the ui tests
+- Merge pull request #332 from erickt/master
+- Switch to using char::encode_utf8
+- Exclude macros file from being tested by itself
+- New error message in UI tests
+- Merge pull request #322 from GyrosOfWar/master
+- Fixed error in tests
+- Better invalid type error message (addresses issue #319)
+- Update ui/parse_expr for latest nightly
+- Link to benchmarks from readme
+- Release 1.0.2
+- Take credit
+- Merge pull request #314 from Rufflewind/t313
+- Fully factor out visitor dependence in number parser
+- Reduce visitor-dependence in number parsers
+- Release 1.0.1
+- No need for pub use in private module
+- Index got lost in the grand value division
+- Merge pull request #311 from serde-rs/int
+- Treat non-integer key as a type error
+- Allow integers to be used as map keys again
+- Merge pull request #306 from serde-rs/entry
+- Use the new linked-hash-map entry API
+- Merge pull request #307 from killercup/feature/split-value-into-pieces
+- Grand value division: value::de
+- Grand value division: value::ser
+- Grand value division: value::from
+- Grand value division: value::partial_eq
+- Grand value division: value::index
+- Move Value into its own mod
+- New version number in readme
+- Release 1.0.0
+- Update to serde 1.0
+- Allow writing to writer by value
+- Use the conventional "Errors" heading
+- Less simplistic to_value example
+- Examples for the deserialization API
+- Fix copy-paste error in deserializer docs
+- Example of from_value
+- Clarify ambiguous imports
+- Allow borrowing from &Value
+- Cargo fmt the error conversions
+- Hide the conversion from io::Error to Error
+- Map type hyperlinks
+- Format in rfc style
+- The serde 1.0 branch merged
+- Merge branch 'origin/1.0' into 'origin/master'
+- Keep up with serde 1.0 branch
+- Organize top links
+- License boilerplate
+- Point html_root_url to docs.rs
+- Fix path to readme file
+- Merge branch 'origin/master' into 'origin/1.0'
+- Merge pull request #303 from serde-rs/offset
+- Test byte offsets of stream
+- Run the existing tests against every type of stream
+- Move stream tests to their own file
+- Expose number of bytes processed by StreamDeserializer
+- Rename ValueDeserializer trait to IntoDeserializer
+- Examples for all the conversion methods
+- Test and document preserve_order feature
+- Merge pull request #302 from serde-rs/combine
+- Combine serde_json and tests into one crate
+- Use the recommended default rustfmt style
+- Clean up some rustdoc example code
+- Merge branch 'origin/master' into 'origin/1.0'
+- Expand the readme examples into real code
+- Release 0.9.10
+- Merge pull request #301 from serde-rs/stream
+- Require array or object in StreamDeserializer
+- More informative parse_whitespace method
+- Merge pull request #299 from serde-rs/ioerr
+- Return io::Error from formatter methods
+- Merge pull request #297 from serde-rs/fragment
+- Pass &str to write_string_fragment
+- Merge pull request #296 from serde-rs/appveyor
+- Set up AppVeyor
+- Merge pull request #295 from serde-rs/tojson
+- Ignore clippy false positive
+- Conversion to io::Error
+- Replace serde::bytes with serde_bytes
+- Keep up with serde 1.0 branch
+- Disable publishing
+- Catch up to serde's 1.0 branch
+- Merge pull request #288 from serde-rs/zerocopy
+- Use the Deserialize<'de> changes from serde's git
+- Merge pull request #278 from serde-rs/error
+- Extend the Error API with line, column, category
+- Merge pull request #280 from imp/value_pretty_print
+- Pretty print Value when alternate formatting requested
+- Merge pull request #276 from serde-rs/ui
+- Compile-fail tests for the json macro
+- Two years outdated comment
+- Deny clippy lints in travis
+- Thanks for the test optimization clippy
+- Release 0.9.9
+- Satisfy clippy with a panic message
+- Merge pull request #267 from nox/display
+- Update to serde 0.9.11 for collect_str
+- Redefine Serializer::collect_str
+- Avoid allocating a String to serialize a single char
+- Merge pull request #273 from cspiegel/json-macro-panic
+- Document the fact that json! can panic.
+- Justify pass-by-value
+- Expose IoRead
+- Release 0.9.8
+- Inline trivial method
+- Merge pull request #265 from bennofs/fix-256-followup
+- Fix performance regression caused by 8123ecc474ea599d4659f20c3cfbfb7011b77628
+- Merge pull request #263 from serde-rs/map
+- Merge pull request #261 from serde-rs/ref-value
+- Test deserializing from &Value
+- Deserializer for &Value
+- Merge pull request #260 from serde-rs/read
+- Expose the various Read implementations
+- Include readme and licenses in crates.io archive
+- Release 0.9.7
+- Merge pull request #257 from bennofs/fix-256
+- Merge pull request #255 from frewsxcv/patch-1
+- Minor doc formatting improvements for `Number`.
+- Typo in StreamDeserializer documentation
+- You shouldn't use Error::description()
+- Merge pull request #253 from killercup/feature/from-t-with-love
+- Implement a bunch of `From`s
+- Merge pull request #250 from serde-rs/stream
+- Expose serde_json::de::Read to use in where clauses
+- Release 0.9.6
+- Merge pull request #249 from serde-rs/index
+- IndexMut for Map and Value
+- Merge pull request #243 from serde-rs/tojson
+- Generalize json! macro to ToJson
+- Release 0.9.5
+- Merge pull request #240 from Kroisse/from-iterator-for-map
+- Implement Extend for value::Map
+- Implement FromIterator for value::Map
+- Release 0.9.4
+- Simplify json macro error cases
+- Improve error message when json macro ends after colon
+- Resolve clippy lints in tests
+- Switch to cargo-clippy
+- Inline docs at the top level
+- Merge pull request #238 from serde-rs/pubtuple
+- No tuple structs with private fields in public API
+- Release 0.9.3
+- Merge pull request #237 from serde-rs/nohelper
+- Refactor json_internal macro to need no helper macros
+- Upgrade to serde's impossible serializer
+- Merge pull request #235 from imp/value_partialeq
+- Update other tests to accomodate new PartialEq impl
+- Impl PartialEq for Value
+- Invalid type errors in unit variant visitor
+- Use json macro in index documentation
+- Use json macro in pointer documentation
+- Clean up value Default documentation
+- Fail to_value on float keys
+- Merge pull request #233 from frewsxcv/doc-example
+- Don't ignore Rust doc example.
+- Merge pull request #232 from frewsxcv/bump
+- Bump 'itoa' and 'dtoa' dependencies.
+- Merge pull request #231 from killercup/fix/221-integer-keys-in-to_value
+- Serialize Map with integer keys
+- Merge pull request #230 from killercup/fix/220-invalid-enum-parser
+- Prevent invalid enum deserialization
+- Rename KeyOnlyVariantVisitor to UnitVariantVisitor
+- Merge pull request #228 from killercup/docs/index-examples
+- Merge pull request #227 from killercup/docs/pointer-example
+- Merge pull request #226 from killercup/feature/impl-default-for-value
+- Impl Default for Value
+- Release 0.9.2
+- Merge pull request #218 from serde-rs/indexmap
+- Index into Map
+- Clarify the type requirement for interpolating map keys
+- Release 0.9.1
+- Non-nightly test on beta only
+- Clean up travis config
+- We don't look at coveralls anymore
+- Docs are built in a different repo
+- Clean up dependency declarations
+- Fix typo in rustdoc
+- Typo in readme
+- Readme cleanup
+- Revamp readme
+- Release 0.9.0
+- Update to serde 0.9.0
+- Release 0.9.0-rc3
+- Update to serde 0.9.0-rc4
+- Document some failure cases
+- Merge pull request #213 from serde-rs/rustdoc
+- Documentation
+- Merge pull request #211 from serde-rs/value
+- Ticks around `None`
+- Justify Index behavior
+- Merge branch master into origin/value
+- Merge pull request #210 from serde-rs/ref
+- Merge branch master into origin/ref
+- Release 0.9.0-rc2
+- Update to serde 0.9.0-rc3
+- Take T by ref
+- Implement indexing into Value
+- Drop pointer methods down to the bottom
+- Pin to rc2
+- Merge pull request #209 from serde-rs/muncher
+- Improve tt object parsing error messages
+- Handle commas within tt object values
+- Better tt handling of commas within array values
+- Use vec![...] in tt-muncher to optimize arrays
+- Put error behind box behind opaque newtype
+- To_value can get away with just a borrow
+- Rearrange json macro to make top-level structure clear
+- Merge pull request #205 from serde-rs/constructors
+- Merge branch master into origin/constructors
+- Release 0.9.0-rc1
+- Merge branch origin/master into origin/constructor
+- Whitelist should_implement_trait
+- Use serde_json::Deserializer for all deserialization
+- Merge pull request #207 from serde-rs/muncher
+- Merge branch master into origin/muncher
+- Merge pull request #208 from serde-rs/builder
+- Update tests to use the tt-muncher
+- Merge pull request #206 from serde-rs/rc2
+- Update to serde 0.9.0-rc2
+- Merge pull request #204 from serde-rs/debug
+- Derive Debug for Value
+- Merge pull request #197 from serde-rs/formatter
+- Require newline to be written successfully
+- Hide itoa/dtoa from the public API
+- Resolve conflicts
+- Merge branch v0.9.0 into master
+- Merge tag v0.8.4 into v0.9.0
+- Merge tag v0.8.3 into v0.9.0
+- Merge pull request #145 from dflemstr/string-formatter-forwarding
+- Forward the correct formatter instance to format_escaped_str
+- Merge pull request #143 from dflemstr/formatter
+- Replace accidental raw null write with Formatter call
+- Make Formatter have a sane default implementation
+- Extend Formatter with more callbacks
+- Merge tag v0.8.6 into master
+- Release 0.8.6
+- Workaround to support rustc 1.8.0
+- Merge tag v0.8.5 into master
+- Release 0.8.5
+- Simplify eof logic
+- Propagate EOF found while checking trailing whitespace
+- Merge pull request #188 from serde-rs/map
+- Update lint name to reflect private N
+- Simplify Value serializer's serialize_bytes
+- Private N
+- Resolve conflicts
+- Merge branch master into map
+- Merge pull request #187 from serde-rs/panic
+- Document the failure cases in to_value / to_json
+- Do not panic in to_value
+- Merge pull request #192 from serde-rs/lookup
+- Clippy lints
+- Inline all the wrapper things
+- Unify the number variants behind an opaque Number
+- Merge branch master into map
+- Stop testing on 1.11.0
+- Fix ?Sized bounds for old compilers
+- Extract serde_json::Map into an opaque newtype
+- Simplify Value's VariantVisitor
+- Merge pull request #185 from serde-rs/up
+- Merge branch master into up
+- Workaround for Rust 1.12.0
+- Do not depend on impls from linked-hash-map
+- Depend on serde 0.9.0-rc1
+- Unabbreviated method naming
+- Implement Deserializer directly on Value
+- Use the Ok value of Serializer to do to_value
+- Enforce correct use of Serialize and Deserialize traits
+- Enforce correct use of Deserialize trait
+- Enforce correct use of Serialize trait
+- Update to Serde 0.9
+- Merge pull request #182 from tshepang/patch-1
+- Follow Rust idiom of trailing comma
+- Allow integers to be used as map keys (#177)
+- Merge pull request #178 from serde-rs/newline
+- Require newline to be written successfully
+- Link to release notes from readme
+- Readme revamp
+- Release 0.8.4
+- Merge pull request #171 from CryptArchy/pointer_mut
+- Implement issue #68 - add pointer_mut
+- Merge pull request #172 from serde-rs/strkey
+- Round trip test for effectively string keys
+- Allow map keys that are effectively strings
+- Merge pull request #163 from serde-rs/limit
+- Limit recursion to 128 levels
+- Drop testing on rust 1.10
+- Minimum support versions
+- Release 0.8.3
+- Merge pull request #161 from mephinet/boolean-typo-fix
+- Typo fixed: it's called Bool, not Boolean - cf https://docs.serde.rs/serde_json/value/enum.Value.html
+- Update to proc_macro
+- Merge pull request #159 from serde-rs/derive
+- Update to serde_derive
+- Fix serde_derive usage examples
+- Update README.md for deprecation of serde_macros for serde_derive
+- Update docs for the deprecation of serde_macros.
+- Merge pull request #156 from traviskaufman/fix/ser-nonfinite-f64-as-value
+- Ensure value::Serializer emits Value::Null for non-finite floats
+- Release 0.8.2
+- Merge pull request #150 from withoutboats/to_writer_trait_objects
+- Allow trait objects in the to_writer function.
+- Merge pull request #149 from rphmeier/to_value_by_value
+- Take argument to `Value::to_value` by value
+- Merge pull request #148 from serde-rs/forward
+- Use serde's forward_to_deserialize
+- Whitelist missing_docs_in_private_items
+- Merge pull request #141 from serde-rs/lints
+- Fix new lints in clippy 0.84
+- Merge pull request #139 from dflemstr/patch-1
+- Derive (Clone, Debug) for formatters
+- Skip preserve_order build on 1.8.0
+- Update documentation links
+- Release 0.8.1
+- Merge pull request #136 from laktak/order
+- Merge pull request #131 from serde-rs/clippy
+- Merge pull request #124 from killercup/patch-1
+- Explicit version in Readme
+- Release 0.8.0
+- Update for map serialization changes
+- Fix test dependency
+- Release 0.8.0-rc1
+- Merge pull request #122 from serde-rs/rc3
+- Update to serde 0.8.0-rc3
+- Bump dtoa depenency
+- Merge pull request #118 from serde-rs/serializer
+- Depend on serde 0.8.0-rc1
+- New Serializer API
+- Merge pull request #117 from serde-rs/rustfmt
+- Run rustfmt
+- Merge pull request #114 from serde-rs/large
+- Parse_exponent_overflow is cold
+- Ignore if_same_then_else false positive
+- Error on large numbers instead of parsing infinity
+- Merge pull request #115 from serde-rs/brackets
+- Fix unexpected brackets in to_value of a newtype struct
+- Merge pull request #110 from serde-rs/float
+- Speed up float parsing
+- Merge pull request #111 from serde-rs/unstable
+- Rename feature "nightly-testing" to "unstable-testing"
+- Merge pull request #105 from serde-rs/str
+- Workaround to support rustc 1.8.0
+- Specialize parse_string for Iter=&str
+- Merge pull request #106 from serde-rs/utf8err
+- Merge pull request #107 from serde-rs/version
+- Merge pull request #104 from serde-rs/type
+- Stop using {:?} to print de::Type
+- Merge pull request #102 from serde-rs/clippy
+- Fix clippy lints
+- Merge pull request #100 from serde-rs/str
+- Specialize parse_string for Iter=&[u8]
+- Merge branch origin/v0.8.0-rc into origin/master
+- Fix f64 tests
+- Speed up float printing
+- Merge pull request #92 from serde-rs/as
+- Rename Value::as_* functions
+- Merge pull request #93 from serde-rs/build
+- Rename Object/ArrayBuilder::unwrap() to build()
+- Merge pull request #94 from serde-rs/escape_bytes
+- Merge pull request #97 from dtolnay/sliceread
+- Specialize parser for Iter=&[u8]
+- Auto merge of #76 - dtolnay:unit, r=erickt
+- Serialize unit variants as name only
+- Release 0.7.4
+- Bump linked-hash-map dependency
+- Auto merge of #89 - dtolnay:str, r=oli-obk
+- Speed up string printing
+- Merge pull request #87 from dtolnay/just-itoa
+- Speed up integer printing
+- Release 0.7.3
+- Merge pull request #85 from npgm/fix-ctrl3
+- Correctly escape ASCII control characters in strings
+- Auto merge of #83 - dtolnay:travis, r=oli-obk
+- Trim down the Travis build
+- Release 0.7.2
+- Rename the map visitor to MapVisitor
+- More consistent with imports between preserve_order and not
+- Mention LinkedHashMap in doc
+- Merge pull request #80 from laktak/preserve_order
+- Updated dependencies
+- Updated from code review
+- Use linked_hash_map::IntoIter
+- Merge pull request #78 from dtolnay/expand
+- Use serde_codegen::expand in json_tests/build.rs
+- Auto merge of #75 - erickt:fix-warning, r=erickt
+- Fix a warning
+- Merge pull request #72 from dtolnay/release
+- Release 0.7.1
+- Auto merge of #73 - Ms2ger:num, r=oli-obk
+- Use num_traits.
+- Auto merge of #61 - arcnmx:value-missing-field, r=oli-obk
+- Auto merge of #63 - s-panferov:feature/traits, r=erickt
+- Impl Display and FromStr traits
+- Auto merge of #41 - pyfisch:json-pointer, r=erickt
+- Implement RFC6901 JSON Pointer
+- Auto merge of #64 - s-panferov:feature/to-json, r=oli-obk
+- Create and impl ToJson trait
+- Merge pull request #49 from dtolnay/indoc
+- Use indoc for JSON document literals in test
+- Merge remote-tracking branch 'remotes/origin/master'
+- Merge pull request #38 from dtolnay/readme
+- Fix examples in readme
+- Add support for skeptic to test readme
+- Update to latest Error::custom signature
+- Merge branch 'master' into 0.7.x
+- Rename JSONStream to StreamDeserializer
+- Merge branch 'feature-parse-stream'
+- Fixed error handling
+- [add] test for empty input
+- [fix] Proper handling of trailing whitespaces
+- Apply review comments:
+- Add clippy support
+- Merge pull request #31 from cmbrandenburg/missing_field_fixes
+- Report correct error code for missing field
+- Merge pull request #25 from tomjakubowski/unsize_to_value
+- Merge pull request #35 from nixpulvis/negative-zero
+- Fix negative zero
+- Fix broken things with latest serde
+- Update to latest serde master rev
+- Feat(serde-up) Support serde 0.7
+- Merge pull request #27 from jnicholls/master
+- Make the constructor methods publicly visible for the PrettyFormatter.
+- Merge pull request #23 from little-arhat/fix-minor-typo
+- Minor typo: Interator => Iterator
+- Merge remote-tracking branch 'remotes/discordtech/master'
+- Merge github.com:serde-rs/json
+- Add necessary whitespace, add renaming example
+- Pin to specific serde/num crates
+- Merge pull request #19 from zr40/patch-1
+- Fix code example in docs
+- Merge pull request #15 from discordtech/master
+- Merge pull request #16 from jnicholls/master
+- Fix typo in documentation of Value::F64
+- Merge pull request #12 from pwoolcoc/num-no-default-features
+- Merge pull request #4 from michaelsproul/readme
+- Fix typo in README plugin example
+- Merge pull request #6 from kamalmarhubi/patch-1
+- Fix typo in Value enum documentation
+- Merge pull request #8 from droundy/master
+- Merge pull request #5 from 3Hren/patch-1
+- Merge pull request #3 from erickt/doc
+- Document everything
+- Auto merge of #2 - erickt:bugs, r=erickt
+- Move the examples since they don't compile on stable rust yet
+- Fixing two compile errors
+- Switch from .to_string() to String::from
+- Re-encrypt token
+- Fix doc url
+- Document serde_json::value
+- More travis work
+- Cleanup travis
+- Fix some links
+- Initial travis configuration
+- Initial import of serde_json
+
+### Fixed
+
+- Fix typo by @jimmycathy
+- Indexmap minimal version with Map::shift_insert() by @cforycki
+- Correct spelling error by @keienWang
+- Fixed typos by @fritzrehde
+- Fixup! chore: Remove no_btreemap_get_key_value and no_btreemap_remove_entry. by @osiewicz
+- Fixup! Remove limb_width32 and limb_width64 features
+- Fix parsing escape sequences after lone surrogates by @lucacasonato
+- Fix wording by @lucacasonato
+- Fix function signature
+- Fix no_btreemap_retain name
+- Test order
+- Fix typos by @striezel
+- Fix required minimum indexmap version
+- Fix bug on error position
+- Deserialize_bytes(): fix bug: clear scratch before parsing next
+- Fix build for preserve_order
+- Missing field error when deserializing from Value
+- Fix the skeptic tests on stable rust
+- Update to latest error types
+- Fix missing variant/field, rename error variants
+- Fixup! Fix broken things with latest serde
+- Fixup! feat(serde-up) Support serde 0.7
+- Fixup! feat(serde-up) Support serde 0.7
+- Fixup! feat(serde-up) Support serde 0.7
+- Fix some warnings
+- Ignore #[derive(...)] example
+- Opt-out of default features of `num`
+- Fix bug in documentation
+- Fix.
+
+### Removed
+
+- Remove *.sw[po] from gitignore by @dtolnay
+- Remove **/*.rs.bk from project-specific gitignore by @dtolnay
+- Remove repeat words by @haouvw
+- Remove conditional on repr(transparent) by @dtolnay
+- Remove unused Float::is_sign_negative trait method by @dtolnay
+- Remove 'remember to update' reminder from Cargo.toml by @dtolnay
+- Remove a few unnecessary lifetimes by @dimo414
+- Remove limb_width32 and limb_width64 features by @osiewicz
+- Removes `println!` from example by @chanced
+- Removes `unwrap` from assertions in `Value::as_number` by @chanced
+- Remove pre-NLL borrow checker workarounds by @dtolnay
+- Remove extra variable by @overdrivenpotato
+- Remove default package.readme metadata from Cargo.toml by @dtolnay
+- Remove duplicate function
+- Remove redundant codepath from parse_float by @dtolnay
+- Remove inapplicable comment about validation in parse_mantissa by @dtolnay
+- Remove confusing 'prim' abbreviation by @dtolnay
+- Remove i32 num impls by @dtolnay
+- Remove unused associated items of Mantissa and Float by @dtolnay
+- Remove unused supertraits in lexical num library by @dtolnay
+- Remove test of removed num types by @dtolnay
+- Remove gratuitous inline from lexical test by @dtolnay
+- Remove dead lexical test code involving radix by @dtolnay
+- Remove unneeded methods from Hi64 by @dtolnay
+- Remove ReverseView and Slice abstractions by @dtolnay
+- Remove dead RSliceIndex trait methods from lexical by @dtolnay
+- Remove extremely sketchy and unnecessary code from lexical by @dtolnay
+- Remove iterator overgeneralization from lexical by @dtolnay
+- Remove arrayvec-oriented abstractions by @dtolnay
+- Remove use of inline(always) by @dtolnay
+- Remove no_alloc codepath and arrayvec by @dtolnay
+- Remove reference to mozilla irc by @dtolnay
+- Remove AppVeyor configuration by @dtolnay
+- Remove Travis configuration by @dtolnay
+- Remove CI badge from Cargo.toml by @dtolnay
+- Remove error variants that are never constructed by @dtolnay
+- Remove ```edition2018 from doc tests after edition update by @dtolnay
+- Remove Read and Bytes by @dtolnay
+- Remove more of core io error by @dtolnay
+- Remove unneeded Debug impl on io error
+- Remove WriteZero error kind
+- Remove source method in no_std mode
+- Remove unneeded itoa std feature
+- Remove unnecessary box trait object from io error repr
+- Remove unnecessary From<Error> for io::Error in no_std mode
+- Remove unused ErrorKind from io error repr
+- Remove unused Simple io error variant
+- Remove reliance on serde StdError for io error repr
+- Remove a layer of reexports from io facade
+- Remove deprecated description() method from Error
+- Remove unneeded lifetimes from pointer signatures
+- Remove try! macro from tests
+- Remove old instructions intended for compiletest
+- Remove old compiletest step from appveyor build
+- Remove serde_derive from doc tests
+- Remove references to macro_use
+- Remove lints that are no longer triggering
+- Remove deprecated -Dclippy
+- Remove PartialEq from RawValue
+- Remove pre-allocation in Deserializer construction
+- Remove irrelevant detail from Map::insert documentation
+- Remove std::i64 imports
+- Remove old work-around for rustc 1.8
+- Remove allocation in parsing escape sequences
+- Remove unnecessary copy in Value::from(Cow::Owned)
+- Remove unnecessary 'static in consts
+- Remove unnecessary allow(needless_pass_by_value)
+- Remove commented code from PR
+- Remove unused extern crate core
+- Remove an unreachable branch
+- Remove deserialization from Iterator<Item = io::Result<u8>>
+- Remove unused ErrorImpl conversion
+- Remove extremely old error conversion
+- Remove ToJson trait
+- Remove misleading comments about serializing to vec
+- Remove redundant EOF check
+- Remove stray comment line
+- Remove dependency on indoc
+- Remove syntex option from test suite
+- Remove escape_str
+- Remove crufty Value methods
+- Remove redundant nesting in debug representation of numbers
+- Remove builder API in favor of json! macro
+- Remove PrettyFormatter method bodies that are identical to the trait
+- Remove Formatter.begin_number and Formatter.end_number
+- Remove trailing whitespace and commented test
+- Remove Value::lookup
+- Remove benchmarks in favor of json-benchmark repo
+- Remove proc_macro feature from readme
+- Remove the proc_macro feature gate
+- Remove rust 1.8.0 workaround
+- Remove unused imports in de.rs
+- Remove unused serde_derive from example
+- Remove doc-upload
+- Remove whitelisted clippy lint fixed in 0.0.80
+- Remove impossible FromUtf8 error
+- Remove escape_bytes
+- Remove runtime checks when deserializing key-only variant
+- Remove commented line in Cargo.toml
+- Remove unnecessary type path
+- Remove the Sized bound on to_value<T>()
+- Remove unused error codes
+
+## First-time Contributors
+
+* @jost-s made their first contribution in [#1](https://github.com/holochain/serde-json/pull/1)
+
+* @dtolnay made their first contribution
+
+* @jimmycathy made their first contribution
+
+* @JonathanBrouwer made their first contribution
+
+* @goffrie made their first contribution
+
+* @tisonkun made their first contribution
+
+* @bheylin made their first contribution
+
+* @djmitche made their first contribution
+
+* @Mrreadiness made their first contribution
+
+* @CryZe made their first contribution
+
+* @GREsau made their first contribution
+
+* @purplesyringa made their first contribution
+
+* @dpathakj made their first contribution
+
+* @cforycki made their first contribution
+
+* @joshka made their first contribution
+
+* @haouvw made their first contribution
+
+* @druide made their first contribution
+
+* @swlynch99 made their first contribution
+
+* @edwardycl made their first contribution
+
+* @mleonhard made their first contribution
+
+* @titaniumtraveler made their first contribution
+
+* @keienWang made their first contribution
+
+* @heiher made their first contribution
+
+* @fritzrehde made their first contribution
+
+* @dimo414 made their first contribution
+
+* @osiewicz made their first contribution
+
+* @chanced made their first contribution
+
+* @ made their first contribution
+
+* @zetanumbers made their first contribution
+
+* @overdrivenpotato made their first contribution
+
+* @LPGhatguy made their first contribution
+
+* @ndmitchell made their first contribution
+
+* @stepancheg made their first contribution
+
+* @Lucretiel made their first contribution
+
+* @kvinwang made their first contribution
+
+* @kvnvelasco made their first contribution
+
+* @lucacasonato made their first contribution
+
+* @dzvon made their first contribution
+
+* @cuviper made their first contribution
+
+* @novedevo made their first contribution
+
+* @EFanZh made their first contribution
+
+* @jplatte made their first contribution
+
+* @ruifengx made their first contribution
+
+* @jayeshmann made their first contribution
+
+* @striezel made their first contribution
+
+* @ratijas made their first contribution
+
+* @DavidKorczynski made their first contribution
+
+* @Krout0n made their first contribution
+
+* @SamuelQZQ made their first contribution
+
+* @icewind1991 made their first contribution
+
+* @Carreau made their first contribution
+
+* @imp made their first contribution
+
+* @matklad made their first contribution
+
+* @tinou98 made their first contribution
+
+* @rimutaka made their first contribution
+
+* @atouchet made their first contribution
+
+* @japaric made their first contribution
+
+* @smarnach made their first contribution
+
+* @sdleffler made their first contribution
+
+* @Xanewok made their first contribution
+
+* @jmfiaschi made their first contribution
+
+* @adetaylor made their first contribution
+
+
+<!-- generated by git-cliff -->
